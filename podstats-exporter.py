@@ -55,8 +55,7 @@ class PodMetrics:
               continue
 
             container_cpu_usage = float(parse_quantity(container['usage']['cpu']))
-            #container_memory_usage = int(int(parse_quantity(container['usage']['memory'])*1000*1000))
-            container_memory_usage = float(parse_quantity(container['usage']['memory']))
+            container_memory_usage = float(parse_quantity(container['usage']['memory'])/1024)
 
             pod_cpu_usage = pod_cpu_usage + container_cpu_usage
             pod_memory_usage = pod_memory_usage + container_memory_usage
