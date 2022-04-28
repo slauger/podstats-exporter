@@ -54,8 +54,9 @@ class PodMetrics:
             if container['name'] == 'POD':
               continue
 
-            container_cpu_usage = parse_quantity("1m")
-            container_memory_usage = int(int(parse_quantity("128m")*1000*1000))
+            container_cpu_usage = float(parse_quantity(container['usage']['cpu']))
+            #container_memory_usage = int(int(parse_quantity(container['usage']['memory'])*1000*1000))
+            container_memory_usage = float(parse_quantity(container['usage']['memory']))
 
             pod_cpu_usage = pod_cpu_usage + container_cpu_usage
             pod_memory_usage = pod_memory_usage + container_memory_usage
